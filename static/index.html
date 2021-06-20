@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>three.js 3D Website Demo</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <script src="js/three.js"></script>
+    <!-- three.js Code -->
+    <script>
+        // Requirements
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+
+        // Renderer Setup
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Simple Cube
+        const cube1Geometry = new THREE.BoxGeometry();
+        const cube1material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+        const cube1 = new THREE.Mesh(cube1Geometry, cube1material);
+        scene.add(cube1);
+        camera.position.z = 5;
+
+        // rendering the scene
+        function animate(){
+            requestAnimationFrame( animate );
+	        renderer.render( scene, camera );   
+        }
+
+        // trigger renderer
+        animate();
+    </script>
+</body>
+</html>
