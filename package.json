@@ -1,15 +1,15 @@
 {
-  "name": "@oliverkarger/three.js-demo",
-  "version": "1.0.0",
-  "description": "three.js 3D Website Demo",
-  "keywords": [
-    "three.js",
-    "npm",
-    "demo"
-  ],
-  "author": {
-    "email": "kmaster@oliver-karger.de",
-    "name": "Oliver Karger"
-  },
-  "license": "SEE LICENSE IN ./License"
+    "name": "@oliverkarger/three.js-demo",
+    "version": "1.0.0",
+    "description": "three.js 3D Website Demo",
+    "keywords": [
+        "three.js",
+        "npm",
+        "demo"
+    ],
+    "author": {
+        "email": "kmaster@oliver-karger.de",
+        "name": "Oliver Karger"
+    },
+    "license": "SEE LICENSE IN ./License"
 }
