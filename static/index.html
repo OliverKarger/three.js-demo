@@ -1,59 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>three.js 3D Website Demo</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <script src="js/three.js"></script>
-    <!-- three.js Code -->
-    <script>
-        // Requirements
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({antialias: true});
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>three.js 3D Website Demo</title>
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <script src="js/three.js"></script>
+        <!-- three.js Code -->
+        <script>
+            // Requirements
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(
+                75,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                1000
+            );
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
 
-        // Renderer Setup
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+            // Renderer Setup
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
 
-        // Simple Cube
-        var cubeGeometry = new THREE.BoxGeometry(100, 100, 100);
-        var cubeMaterial = new THREE.MeshLambertMaterial({color: 0x1ec876});
-        var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        cube.rotation.y = Math.PI * 45 / 180;
-        scene.add(cube);
+            // Cube
+            var cubeGeometry = new THREE.BoxGeometry(100, 100, 100);
+            var cubeMaterial = new THREE.MeshLambertMaterial({
+                color: 0xfafcfd,
+            });
+            var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            cube.rotation.y = (Math.PI * 45) / 180;
+            scene.add(cube);
 
-        // set camera
-        camera.lookAt(cube.position);
-        scene.add(camera);
-        camera.position.y = 160;
-        camera.position.z = 400;
+            // set camera
+            camera.lookAt(cube.position);
+            scene.add(camera);
+            camera.position.y = 20;
+            camera.position.z = 400;
 
-        // skybox
-        var skyboxGeometry = new THREE.BoxGeometry(10000, 10000, 10000);
-        var skyboxMaterial = new THREE.MeshBasicMaterial({color: 0x000000, side: THREE.BackSide});
-        var skybox = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
-        scene.add(skybox);
+            // skybox
+            var skyboxGeometry = new THREE.BoxGeometry(10000, 10000, 10000);
+            var skyboxMaterial = new THREE.MeshBasicMaterial({
+                color: 0x000000,
+                side: THREE.BackSide,
+            });
+            var skybox = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
+            scene.add(skybox);
 
-        // lighting
-        var pointLight = new THREE.PointLight(0xFFFFFF);
-        pointLight.position.set(0, 300, 200);
-        scene.add(pointLight);
+            // lighting
+            var pointLight = new THREE.PointLight(0xffffff);
+            pointLight.position.set(0, 300, 100);
+            scene.add(pointLight);
 
-        // rendering the scene
-        function render(){
-            requestAnimationFrame(render);
-	        renderer.render(scene, camera);   
-            // create movemenet for cube
-            cube.rotation.y = +new Date() / 10000;
-        }
-
-        // trigger renderer
-        render();
-    </script>
-</body>
+            // rendering the scene
+            function render() {
+                requestAnimationFrame(render);
+                renderer.render(scene, camera);
+                // create movemenet for cube
+                cube.rotation.x = +new Date() / 5000;
+                cube.rotation.y = +new Date() / 5000;
+                cube.rotation.z = +new Date() / 5000;
+            }
+            // trigger renderer
+            render();
+        </script>
+    </body>
 </html>
